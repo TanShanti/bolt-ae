@@ -1,0 +1,23 @@
+view: mrt__trip_details {
+
+    sql_table_name: mrt__trip_details
+
+    dimension_group: time_grouping{
+        description: "Time group of booking"
+        type: time
+        timeframe: [date, week, month, year]
+        sql: cast(${TABLE}.trip_date as timestamp)
+    }
+
+    dimension: trip_id{
+        type: string
+        sql: ${TABLE}.trip_id
+    }
+
+    dimension: origin_city{
+        type: string
+        sql: ${TABLE}.origin_city
+    }
+    ...
+
+}

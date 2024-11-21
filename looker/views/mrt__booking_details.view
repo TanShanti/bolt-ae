@@ -1,0 +1,23 @@
+view: mrt__booking_details {
+
+    sql_table_name: mrt__booking_details
+
+    dimension_group: time_grouping{
+        description: "Time group of booking"
+        type: time
+        timeframe: [date, week, month, year]
+        sql: cast(${TABLE}.booking_date as timestamp)
+    }
+
+    dimension: booking_id{
+        type:string
+        sql: ${TABLE}.booking_id
+    }
+
+    dimension: pax{
+        type:number
+        sql: ${TABLE}.pax
+    }
+    ...
+
+}

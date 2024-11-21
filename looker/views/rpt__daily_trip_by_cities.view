@@ -1,0 +1,30 @@
+view: rpt__daily_trip_by_cities {
+
+    sql_table_name: rpt__daily_trip_by_cities
+
+    dimension_group: time_grouping{
+        description: "Time group of booking"
+        type: time
+        timeframe: [date, week, month, year]
+        sql: cast(${TABLE}.trip_date as timestamp)
+    }
+
+    dimension: origin_city {
+        type: string
+        sql: ${TABLE}.origin_city
+    }
+
+    dimension: destination_city {
+        type: string
+        sql: ${TABLE}.destination_city
+    }
+
+    measure: total_trips {
+        type: sum
+        sql: ${TABLE}.total_trips
+    }
+
+
+    ...
+
+}

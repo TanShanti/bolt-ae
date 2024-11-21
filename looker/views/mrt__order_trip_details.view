@@ -1,0 +1,23 @@
+view: mrt__order_trip_details {
+
+    sql_table_name: mrt__order_trip_details
+
+    dimension_group: time_grouping{
+        description: "Time group of booking"
+        type: time
+        timeframe: [date, week, month, year]
+        sql: cast(${TABLE}.order_date as timestamp)
+    }
+
+    dimension: order_id{
+        type: string
+        sql: ${TABLE}.booking_id
+    }
+
+    dimension: customer_id{
+        type: string
+        sql: ${TABLE}.customer_id
+    }
+    ...
+
+}

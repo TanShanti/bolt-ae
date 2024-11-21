@@ -1,0 +1,23 @@
+view: rpt__daily_order_booked {
+
+    sql_table_name: rpt__daily_order_booked
+
+    dimension_group: time_grouping{
+        description: "Time group of booking"
+        type: time
+        timeframe: [date, week, month, year]
+        sql: cast(${TABLE}.order_date as timestamp)
+    }
+
+    measure: total_orders {
+        type: sum
+        sql: ${TABLE}.total_order
+    }
+
+    measure: total_booked_orders {
+        type: sum
+        sql: ${TABLE}.total_booked_orders
+    }
+    ...
+
+}

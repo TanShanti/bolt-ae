@@ -1,0 +1,22 @@
+view: rpt__daily_trip {
+
+    sql_table_name: rpt__daily_trip
+
+    dimension_group: time_grouping{
+        description: "Time group of booking"
+        type: time
+        timeframe: [date, week, month, year]
+        sql: cast(${TABLE}.trip_date as timestamp)
+    }
+
+
+
+    measure: total_trips {
+        type: sum
+        sql: ${TABLE}.total_trips
+    }
+
+
+    ...
+
+}

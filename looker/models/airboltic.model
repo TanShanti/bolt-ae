@@ -1,0 +1,45 @@
+connection: "airboltic-dataset"
+week_start_day: mondy
+
+
+include: "views/mrt__booking_details.view.lkml"
+include: "views/mrt__order_trip_details.view.lkml"
+include: "views/mrt__trip_details.view.lkml"
+
+include: "views/rpt__daily_order_booked.view.lkml"
+include: "views/rpt__daily_trip_by_cities.view.lkml"
+include: "views/rpt__daily_trip.view.lkml"
+
+
+
+explore: mrt__booking_details {
+    group_label: "Analytics Mart"
+    label: "Booking Details"
+}
+
+
+explore: mrt__order_trip_details {
+    group_label: "Analytics Mart"
+    label: "Order Trip Details"
+}
+
+
+explore: mrt__trip_details {
+    group_label: "Analytics Mart"
+    label: "Trip Details"
+}
+
+explore: rpt__daily_order_booked {
+    group_label: "Business Report"
+    label: "Daily Orders"
+}
+
+explore: rpt__daily_trip_by_cities {
+    group_label: "Business Report"
+    label: "Daily Trips by Cities"
+}
+
+explore: rpt__daily_trip {
+    group_label: "Business Report"
+    label: "Daily Trips"
+}
