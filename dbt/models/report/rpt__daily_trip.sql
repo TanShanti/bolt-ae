@@ -18,6 +18,7 @@
 select
 
 trip_date,
+airplane_category,
 count(distinct trip_id) as total_trips,
 sum(max_seats) as total_max_seats,
 sum(booked_seats) as total_booked_seats,
@@ -29,4 +30,4 @@ count(distinct case when trip_status ='{{status}}' then trip_id else null end) a
 {% endfor %}
 
 from  mrt__trip_details
-group by 1
+group by 1,2

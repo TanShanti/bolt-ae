@@ -30,13 +30,16 @@ trip.destination_city as trip_destination_city,
 trip.status as trip_status,
 concat(airplane.manufacturer,"-",airplane.model) as airplane_model,
 airplane.max_seats as airplane_max_seats,
-airplane.operator as airplane_operator,
+airplane.category as airplane_category,
+airplane.operator_id as operator_id,
+operator.name as operator_name,
 order.price_per_seat_eu as price_per_seat_eu,
 order.booking_status as booking_status
 
 
 from order
 left join trip on trip.id = order.trip_id
-left join airplane trip.airplane_id = airplane.id
+left join airplane on trip.airplane_id = airplane.id
+left join operator on airplane.operator_id = operator.id
 left join customer on order.customer_id = customer.id
 left join customer_group on customer_group.id = customer.group_id

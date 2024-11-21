@@ -58,4 +58,4 @@ sum( case when category='{{category}}' then price_per_seat else 0 end) as total_
 {% endfor %}
 
 from mrt__order_trip_detail
-order by 1
+group by 1
